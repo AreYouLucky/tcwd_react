@@ -5,23 +5,34 @@ use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider within a group which
+| contains the "web" middleware group. Now create something great!
+|
+*/
+
 Route::get('/', function () {
-    return Inertia::render('Welcome', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-    ]);
+    return Inertia::render('Auth/Login');
+})->name('login');
+
+
+
+Route::middleware('[role:ADMIN]')->group(function () {
+    Route::get('/admin-dashboard', function () {
+        return Inertia::render('Dashboard');
+    })->name('admin-dashboard');
+
+    Route::get('/provinces/{region_id}', [App\Http\Controllers\Admin\AddressController::class, 'provinces']);
+    Route::get('/cities/{province_id}', [App\Http\Controllers\Admin\AddressController::class, 'cities']);
+    Route::get('/barangay/{city_id}', [App\Http\Controllers\Admin\AddressController::class, 'barangays']);
+
+
+    Route::resource('/users', App\Http\Controllers\Admin\UsersListController::class);
 });
 
-Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
-
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
-
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
