@@ -20,7 +20,7 @@ export default forwardRef(function TextInput(
                 "w-full bg-transparent rounded-lg border border-stroke dark:border-dark-3 py-[10px] pr-3 pl-12 text-dark-300 outline-none transition focus:border-cyan-600 active:border-cyan-600 disabled:cursor-default disabled:bg-gray-2" +
                 className
             }
-            ref={localRef}
+            ref={input}
         />
     );
 });
