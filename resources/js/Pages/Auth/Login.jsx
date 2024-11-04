@@ -8,23 +8,34 @@ import { Head, useForm } from "@inertiajs/react";
 import { useState } from "react";
 import Swal from "sweetalert2/dist/sweetalert2.js";
 import "sweetalert2/src/sweetalert2.scss";
+import { UserRound, Lock } from "lucide-react";
 
 export default function Login() {
-    const { data, setData, processing } = useForm({
+    const [data, setData] = useState({
         username: "",
         password: "",
         logs: "",
     });
     const [errors, setErrors] = useState({});
     const [showPassword, setShowPassword] = useState(false);
+    const [processing, setProcessing] = useState(false);
 
+    const handleChange = (e) => {
+        setData({ ...data, [e.target.name]: e.target.value });
+        setErrors({ ...errors, [e.target.name]: "" });
+    };
     const submit = (e) => {
         e.preventDefault();
+        setProcessing(true);
         axios
             .post("/login", data)
-            .then((res) => {})
+            .then((res) => {
+                setProcessing(false);
+                window.location.href = "/admin-dashboard";
+            })
             .catch((err) => {
                 setErrors(err.response.data.errors);
+                setProcessing(false);
                 Swal.fire({
                     icon: "error",
                     title: "Oops...",
@@ -49,26 +60,14 @@ export default function Login() {
                             className="mt-1 block w-full"
                             autoComplete="username"
                             isFocused={true}
-                            onChange={(e) =>
-                                setData("username", e.target.value)
-                            }
+                            onChange={handleChange}
                         />
                         <span className="absolute top-1/2 left-4 -translate-y-1/2">
-                            <svg
-                                width={20}
-                                height={20}
-                                viewBox="0 0 20 20"
-                                fill="none"
-                                xmlns="http://www.w3.org/2000/svg"
-                            >
-                                <path
-                                    d="M3.72 12.886a4.167 4.167 0 0 1 2.947-1.22h6.666a4.167 4.167 0 0 1 4.167 4.167v1.666a.833.833 0 1 1-1.667 0v-1.666a2.5 2.5 0 0 0-2.5-2.5H6.667a2.5 2.5 0 0 0-2.5 2.5v1.666a.833.833 0 1 1-1.667 0v-1.666a4.17 4.17 0 0 1 1.22-2.947ZM10 3.333a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5Zm-4.166 2.5a4.167 4.167 0 1 1 8.333 0 4.167 4.167 0 0 1-8.333 0Z"
-                                    opacity={0.8}
-                                    fillRule="evenodd"
-                                    clipRule="evenodd"
-                                    fill="#9CA3AF"
-                                />
-                            </svg>
+                            <UserRound
+                                color="#3e9392"
+                                size={20}
+                                strokeWidth={1}
+                            />
                         </span>
                     </div>
                     <InputError message={errors.username} className="mt-2" />
@@ -83,20 +82,10 @@ export default function Login() {
                             value={data.password}
                             className="mt-1 block w-full"
                             autoComplete="current-password"
-                            onChange={(e) =>
-                                setData("password", e.target.value)
-                            }
+                            onChange={handleChange}
                         />
                         <span className="absolute top-1/2 left-4 -translate-y-1/2">
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                stroke="#9CA3AF"
-                                className="size-6"
-                            >
-                                <path d="M16.5 10.5V6.75a4.5 4.5 0 1 0-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H6.75a2.25 2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z" />
-                            </svg>
+                            <Lock color="#3e9392" size={20} strokeWidth={1} />
                         </span>
                     </div>
                     <InputError message={errors.password} className="mt-2" />

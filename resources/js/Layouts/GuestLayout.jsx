@@ -4,7 +4,7 @@ import { Link } from "@inertiajs/react";
 export default function GuestLayout({ children }) {
     return (
         <div className="flex min-h-screen flex-col items-center justify-center p-5">
-            <div className=" w-full overflow-hidden bg-white shadow-md sm:max-w-md rounded-2xl px-10 py-12 mb-12">
+            <div className=" w-full overflow-hidden bg-white shadow-xl border-slate-100 border-2 sm:max-w-md rounded-2xl px-10 py-12 mb-12">
                 <div className="mb-5">
                     <img
                         src="storage/logos/tcwd.png"

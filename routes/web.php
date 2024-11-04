@@ -1,7 +1,5 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
-use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -17,16 +15,16 @@ use Inertia\Inertia;
 */
 
 Route::get('/', function () {
+    sleep(2);
     return Inertia::render('Auth/Login');
 })->name('login');
 
 
-
-Route::middleware('[role:ADMIN]')->group(function () {
+Route::middleware(['role:ADMIN'])->group(function () {
     Route::get('/admin-dashboard', function () {
+        sleep(2);
         return Inertia::render('Dashboard');
     })->name('admin-dashboard');
-
     Route::get('/provinces/{region_id}', [App\Http\Controllers\Admin\AddressController::class, 'provinces']);
     Route::get('/cities/{province_id}', [App\Http\Controllers\Admin\AddressController::class, 'cities']);
     Route::get('/barangay/{city_id}', [App\Http\Controllers\Admin\AddressController::class, 'barangays']);

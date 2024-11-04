@@ -74,7 +74,9 @@ class UserController extends Controller
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            return redirect()->route('admin-dashboard');
+            return response()->json([
+                'status' => 'You successfully logged in!'
+            ]);
         }
         return response()->json([
             'errors' => [

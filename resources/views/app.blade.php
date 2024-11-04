@@ -16,22 +16,16 @@
     @vite(['resources/js/app.jsx', "resources/js/Pages/{$page['component']}.jsx"])
     @inertiaHead
 </head>
-<body class="font-sans antialiased">
+<body class="font-sans">
+    <div class="absolute inset-0 -z-10 h-full w-full bg-white bg-custom-radial"></div>
+
     @inertia
 </body>
 </html>
 <style>
-    body {
-        background-image: url("storage/logos/bg.png");
-        background-attachment: fixed;
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
-        width: 100%;
-        height: 100vh;
-        position: absolute;
+    .bg-custom-radial {
+        background: radial-gradient(125% 125% at 50% 10%, #fff 40%, rgb(0, 153, 255) 100%);
     }
-
 
     .montserrat-black-900 {
         font-family: "Montserrat", sans-serif;
