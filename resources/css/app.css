@@ -9,9 +9,22 @@
 }
 .sidebar {
     background: rgba(255, 255, 255, 0.25);
-    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    box-shadow: 0 8px 15px 0 rgba(31, 38, 135, 0.37);
     backdrop-filter: blur(4px);
     -webkit-backdrop-filter: blur(4px);
     border-radius: 10px;
     border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+/* Sidebar transition styles */
+.sidebar {
+    transition: transform 0.5s ease;
+    width: 20rem; /* Set width of the open sidebar */
+    transform: translateX(0); /* Sidebar is visible */
+}
+
+.sidebar-closed {
+    transition: transform 0.5s ease;
+    width: 0;
+    transform: translateX(-100%); /* Sidebar is hidden */
 }

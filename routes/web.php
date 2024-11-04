@@ -20,7 +20,7 @@ Route::get('/', function () {
 })->name('login');
 
 
-Route::middleware(['role:ADMIN'])->group(function () {
+Route::middleware(['auth', 'role:ADMIN'])->group(function () {
     Route::get('/admin-dashboard', function () {
         sleep(2);
         return Inertia::render('Dashboard');
