@@ -23,7 +23,7 @@ Route::get('/', function () {
 Route::middleware(['auth', 'role:ADMIN'])->group(function () {
     Route::get('/admin-dashboard', function () {
         sleep(2);
-        return Inertia::render('Dashboard');
+        return Inertia::render('Users/ManageUsers');
     })->name('admin-dashboard');
     Route::get('/provinces/{region_id}', [App\Http\Controllers\Admin\AddressController::class, 'provinces']);
     Route::get('/cities/{province_id}', [App\Http\Controllers\Admin\AddressController::class, 'cities']);

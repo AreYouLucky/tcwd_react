@@ -29,7 +29,7 @@ const Sidebar = ({ onLogoutClick }) => {
                             <li key={idx}>
                                 <Link
                                     href={item.href}
-                                    className="flex items-center gap-x-2 p-2 rounded-lg hover:bg-sky-50 active:bg-gray-100 duration-150"
+                                    className="flex items-center gap-x-2 p-2 rounded-lg hover:bg-sky-50 active:bg-gray-100 duration-150 mb-2"
                                 >
                                     <item.logo
                                         size={20}
