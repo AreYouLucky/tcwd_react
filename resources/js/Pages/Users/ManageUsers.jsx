@@ -7,7 +7,6 @@ export default function Dashboard({ auth }) {
     const tableItems = [
         {
             name: "Liam James",
-
             email: "liamjames@example.com",
             position: "Software engineer",
             salary: "$100K",
@@ -38,19 +37,11 @@ export default function Dashboard({ auth }) {
         },
     ];
 
-    const headers = [
-        "Name",
-        "Address",
-        "Meter No.",
-        "Contact No",
-        "Email",
-        "Meter Brand",
-        "Actions",
-    ];
+    const headers = ["Name", "Address", "Meter No.", "Meter Brand", "Actions"];
     return (
-        <DashboardLayout>
+        <DashboardLayout user={auth.user}>
             <Head title="Manage Users" />
-            <div className="mx-auto px-4 md:px-8 mt-2">
+            <div className="max-w-screen-xl mx-auto px-4 md:px-8 mt-2">
                 <div className="items-start justify-between md:flex">
                     <div className="max-w-lg flex flex-row items-center">
                         <ContactRound
