@@ -4,7 +4,7 @@ import { Users, Scroll, PhilippinePeso, MessageCircleMore } from "lucide-react";
 export const navigations = [
     {
         name: "Manage Users",
-        href: "",
+        href: "/admin-dashboard",
         logo: Users, // Pass the actual imported component
     },
     {

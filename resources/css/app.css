@@ -16,15 +16,14 @@
     border: 1px solid rgba(255, 255, 255, 0.18);
 }
 
-/* Sidebar transition styles */
 .sidebar {
     transition: transform 0.5s ease;
-    width: 20rem; /* Set width of the open sidebar */
-    transform: translateX(0); /* Sidebar is visible */
+    width: 20rem;
+    transform: translateX(0);
 }
 
 .sidebar-closed {
     transition: transform 0.5s ease;
     width: 0;
-    transform: translateX(-100%); /* Sidebar is hidden */
+    transform: translateX(-100%);
 }
