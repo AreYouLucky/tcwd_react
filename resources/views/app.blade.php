@@ -17,9 +17,8 @@
     @inertiaHead
 </head>
 <body class="font-sans">
-    <div class="absolute inset-0 -z-10 min-h-screen min-w-screen bg-white bg-custom-radial"></div>
-
     @inertia
+    <div class="absolute inset-0 -z-10 min-h-screen min-w-screen bg-white bg-custom-radial"></div>
 </body>
 </html>
 <style>

@@ -48,16 +48,9 @@ export default function Dashboard({ auth }) {
         "Actions",
     ];
     return (
-        <DashboardLayout
-            user={auth.user}
-            header={
-                <h2 className="font-semibold text-xl text-gray-800 leading-tight">
-                    Manage Users
-                </h2>
-            }
-        >
+        <DashboardLayout>
             <Head title="Manage Users" />
-            <div className="max-w-screen-xl mx-auto px-4 md:px-8 mt-2">
+            <div className="mx-auto px-4 md:px-8 mt-2">
                 <div className="items-start justify-between md:flex">
                     <div className="max-w-lg flex flex-row items-center">
                         <ContactRound
