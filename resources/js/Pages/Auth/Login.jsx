@@ -83,6 +83,7 @@ export default function Login() {
                             className="mt-1 block w-full"
                             autoComplete="current-password"
                             onChange={handleChange}
+                            required
                         />
                         <span className="absolute top-1/2 left-4 -translate-y-1/2">
                             <Lock color="#3e9392" size={20} strokeWidth={1} />
