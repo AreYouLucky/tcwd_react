@@ -33,7 +33,7 @@ export default function Dashboard({ auth }) {
             name: "Amelia Elijah",
             email: "amelia.elijah@example.com",
             position: "Open source manager",
-            salary: "$75K",
+            salary: "$75K  ",
         },
     ];
 
