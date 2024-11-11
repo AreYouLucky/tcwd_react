@@ -6,7 +6,7 @@
         "build": "vite build"
     },
     "devDependencies": {
-        "@headlessui/react": "^1.4.2",
+        "@headlessui/react": "^1.7.19",
         "@inertiajs/react": "^1.0.0",
         "@tailwindcss/forms": "^0.5.3",
         "@vitejs/plugin-react": "^4.2.0",
@@ -21,12 +21,10 @@
         "vite": "^5.0.0"
     },
     "dependencies": {
+        "@heroicons/react": "^2.1.5",
+        "clsx": "^2.1.1",
         "lucide-react": "^0.454.0",
-<<<<<<< HEAD
         "react-hook-form": "^7.53.1",
-        "sweetalert2": "^11.14.4"
-=======
         "sweetalert2": "^11.6.13"
->>>>>>> refs/remotes/origin/main
     }
 }

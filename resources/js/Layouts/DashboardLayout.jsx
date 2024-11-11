@@ -10,11 +10,13 @@ const DashboardLayout = ({ user, header, children }) => {
     const closeModal = () => setLogout(false);
 
     return (
-        <div className="flex min-h-screen">
+        <div className="flex min-h-screen min-w-screen ">
             {/* Sidebar */}
             <div
                 className={`${
-                    isSidebarOpen ? "sidebar" : "sidebar sidebar-closed"
+                    isSidebarOpen
+                        ? "sidebar w-64"
+                        : "sidebar sidebar-closed w-0"
                 } inset-y-0 left-0 bg-white z-50`}
             >
                 {isSidebarOpen && <Sidebar onLogoutClick={showLogout} />}
@@ -23,8 +25,8 @@ const DashboardLayout = ({ user, header, children }) => {
             <Logout show={logout} onClose={closeModal} />
 
             {/* Main Content */}
-            <div className="flex-1 p-4">
-                <div className="p-4 bg-red flex">
+            <div className="flex-1 p-4 overflow-x-auto  transition-width duration-500">
+                <div className="p-2 bg-red flex items-center flex flex-row-reverse md:flex-row justify-between md:justify-start">
                     <button
                         onClick={() => setIsSidebarOpen(!isSidebarOpen)}
                         className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-400 ease-in-out"
@@ -55,23 +57,13 @@ const DashboardLayout = ({ user, header, children }) => {
                             />
                         </svg>
                     </button>
-                    {isSidebarOpen === false && (
-                        <div className="flex items-center ml-8">
-                            <img
-                                src="storage/logos/tcwd.png"
-                                width={40}
-                                className="mx-auto"
-                            />
-                            <h3 className="ml-3 text-gray-600 text-xl font-bold montserrat-black-900 text-center">
-                                TCWD SYSTEM
-                            </h3>
-                        </div>
-                    )}
+
                 </div>
                 <main
-                    className={`${
-                        isSidebarOpen ? "hidden" : "block"
-                    } sm:hidden md:block`}
+                    className={
+                        (isSidebarOpen ? "md:opacity-100 opacity-0" : "opacity-100") +
+                        " w-full transition-opacity duration-500 mt-6 min-h-4/6"
+                    }
                 >
                     {children}
                 </main>

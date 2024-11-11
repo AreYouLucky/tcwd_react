@@ -8,7 +8,7 @@ export default function PrimaryButton({
         <button
             {...props}
             className={
-                `w-full px-4 py-2 text-white font-medium bg-cyan-600 hover:bg-blue-500 active:bg-blue-900 rounded-lg duration-150 ${
+                ` px-4 py-2 text-white font-medium bg-cyan-600 hover:bg-blue-500 active:bg-blue-900 rounded-lg duration-150 ${
                     disabled && "opacity-25"
                 } ` + className
             }

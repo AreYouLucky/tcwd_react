@@ -7,11 +7,13 @@ import {
     MessageCircleMore,
 } from "lucide-react";
 import { navigations } from "../StaticData/SideNavData";
-import { Link } from "@inertiajs/react";
+import { Link, usePage } from "@inertiajs/react"; // Import usePage to get the current route
 
 const Sidebar = ({ onLogoutClick }) => {
+    const { url } = usePage(); // Get the current route URL
+
     return (
-        <nav className="w-full h-full border-r space-y-8 sm:w-80 text-gray-600 border-white">
+        <nav className=" h-full border-r space-y-8 sm:w-full text-gray-600 border-white">
             <div className="flex flex-col h-full px-6">
                 <div className="flex items-center justify-center border-b-2 mb-5 flex-col">
                     <img
@@ -29,7 +31,12 @@ const Sidebar = ({ onLogoutClick }) => {
                             <li key={idx}>
                                 <Link
                                     href={item.href}
-                                    className="flex items-center gap-x-2 p-2 rounded-lg hover:bg-sky-50 active:bg-gray-100 duration-150 mb-2"
+                                    className={
+                                        'flex items-center gap-x-2 p-2 py-3 rounded-lg hover:bg-sky-50 active:bg-gray-100 duration-150 mb-3 ' +
+                                        (url === item.href
+                                            ? 'bg-sky-100 text-gray-900' // Active link style
+                                            : 'text-gray-500 hover:text-gray-700 hover:border-gray-300')
+                                    }
                                 >
                                     <item.logo
                                         size={20}
