@@ -17,13 +17,11 @@ return new class extends Migration
             $table->string('mname')->nullable();
             $table->string('lname');
             $table->string('suffix')->nullable();
-            $table->integer('region');
             $table->integer('province');
             $table->integer('city');
             $table->integer('barangay');
             $table->string('street');
             $table->string('role');
-            $table->string('img')->nullable();
             $table->string('contact_no');
             $table->string('email')->nullable();
             $table->string('meter_no');

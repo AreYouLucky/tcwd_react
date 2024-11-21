@@ -25,9 +25,9 @@ Route::middleware(['auth', 'role:ADMIN'])->group(function () {
         sleep(2);
         return Inertia::render('Users/ManageUsers');
     })->name('admin-dashboard');
-    Route::get('/provinces/{region_id}', [App\Http\Controllers\Admin\AddressController::class, 'provinces']);
+    Route::get('/provinces', [App\Http\Controllers\Admin\AddressController::class, 'provinces']);
     Route::get('/cities/{province_id}', [App\Http\Controllers\Admin\AddressController::class, 'cities']);
-    Route::get('/barangay/{city_id}', [App\Http\Controllers\Admin\AddressController::class, 'barangays']);
+    Route::get('/barangays/{city_id}', [App\Http\Controllers\Admin\AddressController::class, 'barangays']);
 
 
     Route::resource('/users', App\Http\Controllers\Admin\UsersListController::class);

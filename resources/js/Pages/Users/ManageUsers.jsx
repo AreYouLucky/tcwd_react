@@ -7,12 +7,17 @@ import Pagination from "@/Components/Pagination";
 import TextInputDense from "@/Components/TextInputDense";
 import { useState } from "react";
 import SelectFields from "@/Components/SelectFields";
+import UserForm from "./UserForm";
 export default function Dashboard({ auth }) {
     const [fields, setFields] = useState({
         search: "",
         brgy: " ",
     });
 
+    const [userForm, setUserForm] = useState(false);
+
+    const showUserForm = () => setUserForm(true);
+    const closeUserForm = () => setUserForm(false);
     const handleChange = (e) => {
         setFields({ ...fields, [e.target.name]: e.target.value });
     };
@@ -117,7 +122,7 @@ export default function Dashboard({ auth }) {
                         <div className=" flex justify-items-start md:justify-between items-center w-full mt-6 flex-col-reverse md:flex-row">
                             <div className=" flex ">
                                 <div className=" mt-3 md:mt-0">
-                                    <SelectFields />
+                                    {/* <SelectFields /> */}
                                 </div>
                                 <div className="flex mt-3 md:mt-0">
                                     <TextInputDense
@@ -144,7 +149,10 @@ export default function Dashboard({ auth }) {
                                 </div>
                             </div>
                             <div className="w-auto ml-auto">
-                                <PrimaryButton className="inline-flex items-center px-4 py-2 mt-3 md:mt-3">
+                                <PrimaryButton
+                                    className="inline-flex items-center px-4 py-2 mt-3 md:mt-3"
+                                    onClick={showUserForm}
+                                >
                                     <CopyPlus
                                         size={20}
                                         strokeWidth={2}
@@ -201,6 +209,7 @@ export default function Dashboard({ auth }) {
                     </div>
                 </div>
             </DashboardLayout>
+            <UserForm show={userForm} onClose={closeUserForm} />
         </>
     );
 }

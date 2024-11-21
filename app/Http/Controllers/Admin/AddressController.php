@@ -11,17 +11,17 @@ use App\Models\Barangay;
 
 class AddressController extends Controller
 {
-    public function provinces($region_id)
+    public function provinces()
     {
-        return Province::where('region_id', $region_id)->get();
+        return Province::orderBy('province_name', 'asc')->get();
     }
     public function cities($province_id)
     {
-        return City::where('province_id', $province_id)->get();
+        return City::where('province_id', $province_id)->orderBy('municipality_name', 'asc')->get();
     }
 
     public function barangays($city_id)
     {
-        return Barangay::where('municipality_id', $city_id)->get();
+        return Barangay::where('municipality_id', $city_id)->orderBy('barangay_name', 'asc')->get();
     }
 }
